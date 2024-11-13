@@ -11,7 +11,7 @@ def test_happy_path():
 
 def test_minors_cannot_order_from_the_shop():
     user = (UserBuilder()
-        .set_age(16)
+        .make_minor()
         .build())
         
     assert not Shop.can_order(user)
@@ -25,9 +25,9 @@ def test_cannot_order_if_not_verified():
     assert not Shop.can_order(user)
 
 
-def test_foreigners_must_be_foreign_fee(paris_address):
+def test_foreigners_must_be_foreign_fee():
     user = (UserBuilder()
-        .set_address(paris_address)
+        .use_foreign_address()
         .build())
 
     assert Shop.must_pay_foreign_fee(user)

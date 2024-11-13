@@ -13,12 +13,12 @@ class UserBuilder:
     def build(self):
         return self.user
     
-    def set_address(self, address):
-        self.user.address = address
+    def use_foreign_address(self):
+        self.user.address = Address("33 quai d'Orsay", "", "Paris", "75007", "France")
         return self
     
-    def set_age(self, age):
-        self.user.age = age
+    def make_minor(self):
+        self.user.age = 16
         return self
     
     def set_verified(self, verified):
